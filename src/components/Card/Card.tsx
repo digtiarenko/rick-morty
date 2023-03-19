@@ -7,7 +7,7 @@ function Card() {
         <img src="" alt="" />
       </div>
       <div className={styles.cardFooter}>
-        <h4 className={styles.cardTitle}>Rick Sanchez</h4>
+        <h4 className={styles.cardTitle}>Ants n</h4>
         <p className="cardSubtitle">Human</p>
       </div>
     </li>

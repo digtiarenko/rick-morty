@@ -6,9 +6,9 @@
   margin-bottom: 200px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 312px);
-  grid-template-rows: 308px;
-  // justify-items: center;
-  // align-items: center;
+  // grid-template-rows: 308px;
+  // grid-auto-rows: 308px;
+
   gap: 32px;
   @include for-size(tablet) {
     margin-top: 41px;
@@ -16,7 +16,7 @@
   @include for-size(desktop) {
     margin-top: 61px;
     grid-template-columns: repeat(auto-fill, 240px);
-    grid-template-rows: 244px;
+    // grid-template-rows: 244px;
     gap: 24px 20px;
   }
 }
