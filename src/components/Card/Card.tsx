@@ -8,7 +8,7 @@ function Card() {
       </div>
       <div className={styles.cardFooter}>
         <h4 className={styles.cardTitle}>Ants n</h4>
-        <p className="cardSubtitle">Human</p>
+        <p className={styles.cardSubtitle}>Human</p>
       </div>
     </li>
   );

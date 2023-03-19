@@ -1,0 +1,63 @@
+@import '../../sass/utils/templates';
+@import '../../sass/utils/variables';
+
+.link {
+  margin-top: 25px;
+  align-self: start;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-transform: uppercase;
+  @extend %fontBackBtn;
+}
+
+.characterPageWrapper {
+  width: 312px;
+  margin-top: 78px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imgWrapper {
+  width: 150px;
+  height: 158px;
+  border-radius: 50%;
+  background-color: tomato;
+}
+
+.subtitle {
+  align-self: start;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: rgba(142, 142, 147, 1);
+}
+
+.featureList {
+  display: block;
+  width: 100%;
+}
+
+.featureCard {
+  display: block;
+  // width: 100%;
+  margin-right: 11px;
+  margin-left: 11px;
+  padding: 12px 1px;
+  border-bottom: 1px solid rgba(33, 33, 33, 0.08);
+}
+
+.featureName {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: $chMainTextColor;
+}
+
+.featureValue {
+  @extend %fontSubtitleCard;
+  color: $chSecondaryTextColor;
+}

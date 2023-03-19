@@ -1,4 +1,4 @@
-import CardLsit from '../../components/CardList/CardLsit';
+import CardLsit from '../../components/CardList/CardList';
 import Logo from '../../components/Logo/Logo';
 import SearchField from '../../components/searchField/SearchField';
 

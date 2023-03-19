@@ -14,7 +14,7 @@ function SearchField() {
 
   return (
     <form className={styles.formField}>
-      <SearchLogo className={styles.formLogo} width={15} />
+      <SearchLogo className={styles.formLogo} />
       <input className={styles.searchField} type="text" placeholder="Filter by name..." />
     </form>
   );

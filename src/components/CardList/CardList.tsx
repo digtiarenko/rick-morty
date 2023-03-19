@@ -1,13 +1,11 @@
 import Card from '../Card/Card';
 import styles from './cardList.module.scss';
 
-function CardLsit() {
+function CardList() {
   return (
     <ul className={styles.cardList}>
       <Card />
-
       <Card />
-
       <Card />
       <Card />
       <Card />
@@ -16,4 +14,4 @@ function CardLsit() {
   );
 }
 
-export default CardLsit;
+export default CardList;
