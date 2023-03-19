@@ -1,5 +1,15 @@
+import CardLsit from '../../components/CardList/CardLsit';
+import Logo from '../../components/Logo/Logo';
+import SearchField from '../../components/searchField/SearchField';
+
 function HomePage() {
-  return <div>home</div>;
+  return (
+    <div className="container">
+      <Logo />
+      <SearchField />
+      <CardLsit />
+    </div>
+  );
 }
 
 export default HomePage;

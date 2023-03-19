@@ -1,0 +1,33 @@
+@import '../../sass/utils/_mixins';
+@import '../../sass/utils/variables';
+
+.formField {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  border: 1px solid $inputColor;
+  border-radius: 8px;
+  @include for-size(tablet) {
+    max-width: 670px;
+  }
+  @include for-size(desktop) {
+    max-width: 1020px;
+  }
+}
+
+.formLogo {
+  margin: 20px;
+}
+
+.searchField {
+  width: 100%;
+  margin: 2px;
+  outline: none;
+  border: none;
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    color: $inputColor;
+  }
+}

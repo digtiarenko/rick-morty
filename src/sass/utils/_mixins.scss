@@ -1,0 +1,30 @@
+// Container
+
+@mixin for-size($range) {
+  $mobile: 360px;
+  $tablet: 768px;
+  $desktop: 1440px;
+
+  @if $range == mobile {
+    @media (min-width: $mobile) and (max-width: ( $tablet - 1)) {
+      @content;
+    }
+  } @else if $range == tablet {
+    @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
+      @content;
+    }
+  } @else if $range == desktop {
+    @media (min-width: $desktop) {
+      @content;
+    }
+  }
+}
+
+// Typography
+
+%fontTitleCard {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+}
