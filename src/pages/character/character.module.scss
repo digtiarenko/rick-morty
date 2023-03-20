@@ -1,38 +1,82 @@
 @import '../../sass/utils/templates';
 @import '../../sass/utils/variables';
+@import '../../sass/utils/mixins';
 
 .link {
   margin-top: 25px;
+  padding: 5px;
   align-self: start;
   display: flex;
   align-items: center;
   gap: 12px;
   text-transform: uppercase;
+  transition: 0.4s;
   @extend %fontBackBtn;
+
+  &:hover .svgIcon {
+    animation: scroll 2s ease infinite;
+  }
+}
+
+.svgIcon {
+  transition: 0.4s;
 }
 
 .characterPageWrapper {
   width: 312px;
   margin-top: 78px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @include for-size(desktop) {
+    width: 413px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
 }
 
-.imgWrapper {
-  width: 150px;
-  height: 158px;
+// .characterPageWrapper {
+//   height: 300px;
+// }
+
+.characterImg {
+  max-width: 150px;
+  margin-top: 78px;
   border-radius: 50%;
-  background-color: tomato;
+  border: 5px solid #f2f2f7;
+  @include for-size(desktop) {
+    margin-top: 32px;
+    max-width: 300px;
+  }
+}
+
+.title {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  @extend %fontCharacterName;
+  @include for-size(desktop) {
+    margin-top: 16px;
+    margin-bottom: 48px;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 56px;
+  }
 }
 
 .subtitle {
+  margin-bottom: 15px;
   align-self: start;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.15px;
   color: rgba(142, 142, 147, 1);
+
+  @include for-size(desktop) {
+    align-self: center;
+    margin-bottom: 48px;
+  }
 }
 
 .featureList {
@@ -42,7 +86,6 @@
 
 .featureCard {
   display: block;
-  // width: 100%;
   margin-right: 11px;
   margin-left: 11px;
   padding: 12px 1px;
@@ -60,4 +103,13 @@
 .featureValue {
   @extend %fontSubtitleCard;
   color: $chSecondaryTextColor;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0.2rem);
+  }
 }

@@ -1,19 +1,20 @@
-// import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ReactComponent as ArrowSVG } from '../../images/svg/arrowBack.svg';
+import rickImg from '../../images/rick.png';
 import styles from './character.module.scss';
 
 function CharacterPage() {
   return (
     <div className="container">
-      <a className={styles.link} href="/">
-        <ArrowSVG width={16} />
+      <Link to="/" className={styles.link}>
+        <ArrowSVG className={styles.svgIcon} width={16} />
         Go back
-      </a>
-      <div className={styles.characterPageWrapper}>
-        <div className={styles.imgWrapper}>
-          <img src="" alt="" />
-        </div>
-        <h1 className="title">Rick Sanchez</h1>
+      </Link>
+      {/* <div className={styles.characterPageWrapper}> */}
+      <div className={styles.imgWrapper}>
+        <img className={styles.characterImg} src={rickImg} alt="rick" />
+        {/* </div> */}
+        <h1 className={styles.title}>Rick Sanchez</h1>
         <p className={styles.subtitle}>Informations</p>
         <ul className={styles.featureList}>
           <li className={styles.featureCard}>

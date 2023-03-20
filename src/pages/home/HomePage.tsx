@@ -1,4 +1,5 @@
 import CardLsit from '../../components/CardList/CardList';
+import LoadMore from '../../components/LoadMore/LoadMore';
 import Logo from '../../components/Logo/Logo';
 import SearchField from '../../components/searchField/SearchField';
 
@@ -8,6 +9,7 @@ function HomePage() {
       <Logo />
       <SearchField />
       <CardLsit />
+      <LoadMore />
     </div>
   );
 }
