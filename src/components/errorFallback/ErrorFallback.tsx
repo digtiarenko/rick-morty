@@ -1,7 +1,8 @@
 import errorGif from '../../images/gif/error.gif';
 import styles from './errorFallback.module.scss';
+import { FallbackProps } from 'react-error-boundary';
 
-function ErrorFallback({ error }: { error: Error }) {
+function ErrorFallback({ error }: FallbackProps) {
   return (
     <div className="container">
       <div className={styles.errorWrapper}>

@@ -22,6 +22,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
+    "react/destructuring-assignment": ["never"],
     "prettier/prettier": [
       "error",
       {
