@@ -1,9 +1,8 @@
-import './App.css';
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import Loading from './components/Loading/Loading';
-import ErrorFallback from './components/ErrorFallback/ErrorFallback';
+import ErrorFallback from './components/errorFallback/ErrorFallback';
 
 const HomePage = lazy(() => import('./pages/home/HomePage' /* webpackChunkName: "HomePage" */));
 const CharacterPage = lazy(() => import('./pages/character/CharacterPage' /* webpackChunkName: "CharacterPage" */));

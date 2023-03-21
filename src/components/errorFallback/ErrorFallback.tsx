@@ -1,6 +1,6 @@
+import { FallbackProps } from 'react-error-boundary';
 import errorGif from '../../images/gif/error.gif';
 import styles from './errorFallback.module.scss';
-import { FallbackProps } from 'react-error-boundary';
 
 function ErrorFallback({ error }: FallbackProps) {
   return (
