@@ -9,7 +9,6 @@ function HomePage() {
       <Logo />
       <SearchField />
       <CardLsit />
-      <LoadMore />
     </div>
   );
 }

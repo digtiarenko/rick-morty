@@ -22,6 +22,11 @@
   transition: 0.4s;
 }
 
+.imgWrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .characterPageWrapper {
   width: 312px;
   margin-top: 78px;

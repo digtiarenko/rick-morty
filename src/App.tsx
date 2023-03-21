@@ -14,7 +14,7 @@ function App() {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/characters/:characterId" element={<CharacterPage />} />
+          <Route path="/characters/:id" element={<CharacterPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </ErrorBoundary>

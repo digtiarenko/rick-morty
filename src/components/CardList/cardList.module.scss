@@ -6,6 +6,7 @@
   grid-template-columns: repeat(auto-fill, 312px);
 
   gap: 32px;
+
   @include for-size(tablet) {
     margin-top: 41px;
   }
