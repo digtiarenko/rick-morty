@@ -10,6 +10,8 @@
   align-items: center;
   gap: 12px;
   text-transform: uppercase;
+  background-color: transparent;
+  border: none;
   transition: 0.4s;
   @extend %fontBackBtn;
 

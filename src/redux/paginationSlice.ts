@@ -15,13 +15,16 @@ export const pageSlice = createSlice({
   name: 'pages',
   initialState,
   reducers: {
-    increment: (state: { value: number }) => {
+    addPage: (state: { value: number }) => {
       state.value += 1;
+    },
+    setPageToOne: (state) => {
+      state.value = initialState.value;
     },
   },
 });
 
-export const { increment } = pageSlice.actions;
+export const { addPage, setPageToOne } = pageSlice.actions;
 export const getPage = (state: RootState) => state.pages.value;
 
 // export const useAppDispatch: () => AppDispatch = useDispatch;

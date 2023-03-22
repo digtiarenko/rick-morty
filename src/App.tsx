@@ -1,16 +1,18 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
-import Loading from './components/Loading/Loading';
+// import Loading from './components/Loading/Loading';
+// import HomePage from './pages/home/HomePage';
 import ErrorFallback from './components/errorFallback/ErrorFallback';
 
 const HomePage = lazy(() => import('./pages/home/HomePage' /* webpackChunkName: "HomePage" */));
+const Loading = lazy(() => import('./components/Loading/Loading' /* webpackChunkName: "HomePage" */));
 const CharacterPage = lazy(() => import('./pages/character/CharacterPage' /* webpackChunkName: "CharacterPage" */));
 const Page404 = lazy(() => import('./pages/404/Page404' /* webpackChunkName: "CharacterPage" */));
 
 function App() {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Loading message="loading..." />}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Routes>
           <Route path="/" element={<HomePage />} />

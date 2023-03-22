@@ -9,6 +9,7 @@ const store = configureStore({
   reducer: {
     [charactersApi.reducerPath]: charactersApi.reducer,
     [oneCharacterApi.reducerPath]: oneCharacterApi.reducer,
+    // [findCharacterApi.reducerPath]: findCharacterApi.reducer,
     pages: pageSlice.reducer,
     filter: filterSlice.reducer,
   },

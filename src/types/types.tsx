@@ -1,3 +1,5 @@
+// import { ArgType } from '../redux/charactersAPI';
+
 export interface Character {
   id: number;
   name: string;
@@ -19,7 +21,7 @@ export interface Character {
   created: string;
 }
 
-export interface CharacterResponse {
+export interface CharactersResponse {
   info: {
     count: number;
     pages: number;
@@ -32,10 +34,10 @@ export interface CharacterResponse {
 export interface NormalizedCharacter {
   id: number;
   name: string;
-  status: string;
   species: string;
-  type: string;
-  gender: string;
-  location: string;
   image: string;
 }
+// export interface ModifiedResponse {
+//   arg: ArgType;
+//   normalizedData: NormalizedCharacter[];
+// }

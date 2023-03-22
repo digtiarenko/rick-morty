@@ -1,13 +1,13 @@
-import { Link, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ReactComponent as ArrowSVG } from '../../images/svg/arrowBack.svg';
-// import rickImg from '../../images/rick.png';
 import styles from './character.module.scss';
 import { useGetOneCharacterQuery } from '../../redux/charactersAPI';
 
 function CharacterPage() {
+  const location = useLocation();
+  const navigation = useNavigate();
   const { id } = useParams();
-  console.log('id', id);
-  const { data, isLoading, error } = useGetOneCharacterQuery(id);
+  const { data } = useGetOneCharacterQuery(id);
 
   const { name, status, species, type, gender, origin, image } = data || {};
   return (
@@ -15,10 +15,10 @@ function CharacterPage() {
       {' '}
       {data && (
         <div className="container">
-          <Link to="/" className={styles.link}>
+          <button onClick={() => navigation(location?.state?.from || '/')} type="button" className={styles.link}>
             <ArrowSVG className={styles.svgIcon} width={16} />
             Go back
-          </Link>
+          </button>
           <div className={styles.characterPageWrapper}>
             <div className={styles.imgWrapper}>
               <img className={styles.characterImg} src={image} alt="rick" />

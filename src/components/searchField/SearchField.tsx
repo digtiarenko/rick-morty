@@ -1,26 +1,19 @@
 import { ReactComponent as SearchLogo } from '../../images/svg/search.svg';
-import { changeFilter, getFilter } from '../../redux/filterSlice';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
 import styles from './searchField.module.scss';
 
-function SearchField() {
-  const dispatch = useAppDispatch();
-  const filterValue = useAppSelector(getFilter);
-  const onChangeFilter = (event: { target: { value: string } }) => {
+function SearchField({ query, handleChange }: { query: string; handleChange: (value: string) => void }) {
+  const changeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    if (value === ' ') {
-      return;
-    }
-    dispatch(changeFilter(value));
+    handleChange(value.trim());
   };
 
   return (
-    <form className={styles.formField}>
+    <form onSubmit={(e) => e.preventDefault()} className={styles.formField}>
       <SearchLogo className={styles.formLogo} />
       <input
         className={styles.searchField}
-        value={filterValue}
-        onChange={onChangeFilter}
+        value={query}
+        onChange={changeInput}
         type="text"
         placeholder="Filter by name..."
       />

@@ -1,7 +1,8 @@
+/* eslint-disable import/no-cycle */
 import { BaseQueryFn, createApi } from '@reduxjs/toolkit/query/react';
-import axios, { AxiosRequestConfig } from 'axios';
-import { Character, CharacterResponse, NormalizedCharacter } from '../types/types';
-import { charactersReducer } from '../utils/dataFunctions';
+import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+import { Character, CharactersResponse, NormalizedCharacter } from '../types/types';
+import { charactersTransform } from '../utils/dataFunctions';
 
 const { VITE_APP_DB_BASE_URL } = import.meta.env;
 const baseURL: string | undefined = VITE_APP_DB_BASE_URL;
@@ -17,6 +18,7 @@ export const initialState: CharacterListState = {
   data: [],
   error: null,
 };
+export type ArgType = { page: number; query: string };
 
 const axiosBaseQuery =
   (
@@ -32,9 +34,18 @@ const axiosBaseQuery =
     unknown
   > =>
   async ({ url, method, data, params }) => {
-    const result = await axios({ url: baseUrl + url, method, data, params });
-    return { data: result.data };
-    // Add error handling
+    try {
+      const result = await axios({ url: baseUrl + url, method, data, params });
+      return { data: result.data };
+    } catch (axiosError) {
+      const err = axiosError as AxiosError;
+      return {
+        error: {
+          status: err.response?.status,
+          data: err.response?.data,
+        },
+      };
+    }
   };
 
 export const charactersApi = createApi({
@@ -42,25 +53,58 @@ export const charactersApi = createApi({
   baseQuery: axiosBaseQuery({
     baseUrl: baseURL!,
   }),
-  tagTypes: ['characters'],
+  tagTypes: ['characters', 'search'],
 
   endpoints: (builder) => ({
-    getCharacters: builder.query<NormalizedCharacter[], number>({
-      query: (page) => ({
-        url: `character/?page=${page}`,
-        method: 'GET',
-      }),
+    getCharacters: builder.query<NormalizedCharacter[], ArgType>({
+      query: (arg) => {
+        const { page = 1, query = '' } = arg;
+        const name = query;
+        return {
+          url: `character/`,
+          params: { name, page },
+          method: 'GET',
+        };
+      },
       serializeQueryArgs: ({ endpointName }) => endpointName,
-      transformResponse: (response: CharacterResponse) => charactersReducer(response),
-      merge: (currentCache, newItems) => [...currentCache, ...newItems],
+      transformResponse: (response: CharactersResponse) => charactersTransform(response),
+      merge: (currentCache, newItems, { arg }) => {
+        if (arg.page > 1) {
+          return [...currentCache, ...newItems];
+        }
+        return newItems;
+      },
       forceRefetch({ currentArg, previousArg }) {
         return currentArg !== previousArg;
       },
-      keepUnusedDataFor: 30,
       providesTags: ['characters'],
     }),
   }),
 });
+
+// export const findCharacterApi = createApi({
+//   reducerPath: 'findCharacter',
+//   baseQuery: axiosBaseQuery({
+//     baseUrl: baseURL!,
+//   }),
+//   tagTypes: ['findCharacter'],
+
+//   endpoints: (builder) => ({
+//     findCharacters: builder.query<NormalizedCharacter[], string>({
+//       query: (query) => ({
+//         url: `character/?name=${query}`,
+//         method: 'GET',
+//       }),
+//       serializeQueryArgs: ({ endpointName }) => endpointName,
+//       transformResponse: (response: CharacterResponse) => charactersReducer(response),
+//       merge: (currentCache, newItems) => [...currentCache, ...newItems],
+//       forceRefetch({ currentArg, previousArg }) {
+//         return currentArg !== previousArg;
+//       },
+//       providesTags: ['findCharacter'],
+//     }),
+//   }),
+// });
 
 export const oneCharacterApi = createApi({
   reducerPath: 'oneCharacter',
@@ -80,5 +124,6 @@ export const oneCharacterApi = createApi({
   }),
 });
 
+// export const { useFindCharactersQuery } = findCharacterApi;
 export const { useGetCharactersQuery } = charactersApi;
 export const { useGetOneCharacterQuery } = oneCharacterApi;
