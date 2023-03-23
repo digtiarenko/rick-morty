@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { BaseQueryFn, createApi } from '@reduxjs/toolkit/query/react';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import { Character, CharactersResponse, NormalizedCharacter } from '../types/types';
@@ -19,7 +18,7 @@ export const initialState: CharacterListState = {
   error: null,
 };
 export type ArgType = { page: number; query: string };
-
+//  AXIOS  //
 const axiosBaseQuery =
   (
     { baseUrl }: { baseUrl: string } = { baseUrl: '' },
@@ -47,7 +46,7 @@ const axiosBaseQuery =
       };
     }
   };
-
+//  Fetching mult characters  //
 export const charactersApi = createApi({
   reducerPath: ' characters',
   baseQuery: axiosBaseQuery({
@@ -81,31 +80,7 @@ export const charactersApi = createApi({
     }),
   }),
 });
-
-// export const findCharacterApi = createApi({
-//   reducerPath: 'findCharacter',
-//   baseQuery: axiosBaseQuery({
-//     baseUrl: baseURL!,
-//   }),
-//   tagTypes: ['findCharacter'],
-
-//   endpoints: (builder) => ({
-//     findCharacters: builder.query<NormalizedCharacter[], string>({
-//       query: (query) => ({
-//         url: `character/?name=${query}`,
-//         method: 'GET',
-//       }),
-//       serializeQueryArgs: ({ endpointName }) => endpointName,
-//       transformResponse: (response: CharacterResponse) => charactersReducer(response),
-//       merge: (currentCache, newItems) => [...currentCache, ...newItems],
-//       forceRefetch({ currentArg, previousArg }) {
-//         return currentArg !== previousArg;
-//       },
-//       providesTags: ['findCharacter'],
-//     }),
-//   }),
-// });
-
+// Fetching one character
 export const oneCharacterApi = createApi({
   reducerPath: 'oneCharacter',
   baseQuery: axiosBaseQuery({
@@ -124,6 +99,5 @@ export const oneCharacterApi = createApi({
   }),
 });
 
-// export const { useFindCharactersQuery } = findCharacterApi;
 export const { useGetCharactersQuery } = charactersApi;
 export const { useGetOneCharacterQuery } = oneCharacterApi;

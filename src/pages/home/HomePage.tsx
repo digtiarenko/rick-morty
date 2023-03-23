@@ -5,6 +5,7 @@ import Loading from '../../components/Loading/Loading';
 import LoadMore from '../../components/LoadMore/LoadMore';
 import Logo from '../../components/Logo/Logo';
 import SearchField from '../../components/searchField/SearchField';
+import SignIn from '../../components/SignIn/SignIn';
 import { useGetCharactersQuery } from '../../redux/charactersAPI';
 import { getPage, setPageToOne } from '../../redux/paginationSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
@@ -26,6 +27,7 @@ function HomePage() {
   const sohuldShowError = !!error;
   return (
     <div className="container">
+      <SignIn />
       <Logo />
       <SearchField query={query} handleChange={handleChange} />
       {sortedData && !error && <CardList data={sortedData} />}

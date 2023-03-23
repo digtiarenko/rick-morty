@@ -1,0 +1,46 @@
+@import '../../sass/utils/templates';
+@import '../../sass/utils/variables';
+@import '../../sass/utils/mixins';
+
+.signinButton {
+  display: flex;
+  width: 100px;
+  margin: 10px;
+  justify-content: space-around;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 1px solid $inputColor;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  @extend %fontSubtitleCard;
+  &:hover {
+    font-weight: 500;
+  }
+  &:hover .img {
+    transform: scale(1.2);
+  }
+}
+
+.signInContainer {
+  position: absolute;
+  right: 24px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @include for-size(tablet) {
+    right: 68px;
+  }
+  @include for-size(desktop) {
+    right: 210px;
+  }
+}
+
+.img {
+  transition: 0.4s;
+  width: 25px;
+  height: 25px;
+}

@@ -3,15 +3,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { charactersApi, oneCharacterApi } from './charactersAPI';
 import { pageSlice } from './paginationSlice';
-import { filterSlice } from './filterSlice';
 
 const store = configureStore({
   reducer: {
     [charactersApi.reducerPath]: charactersApi.reducer,
     [oneCharacterApi.reducerPath]: oneCharacterApi.reducer,
-    // [findCharacterApi.reducerPath]: findCharacterApi.reducer,
     pages: pageSlice.reducer,
-    filter: filterSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(charactersApi.middleware).concat(oneCharacterApi.middleware),

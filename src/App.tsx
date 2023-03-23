@@ -1,8 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
-// import Loading from './components/Loading/Loading';
-// import HomePage from './pages/home/HomePage';
 import ErrorFallback from './components/errorFallback/ErrorFallback';
 
 const HomePage = lazy(() => import('./pages/home/HomePage' /* webpackChunkName: "HomePage" */));
